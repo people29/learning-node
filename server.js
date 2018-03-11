@@ -8,4 +8,4 @@ let server = app.listen(port, () => {
     console.log('API is started on port ' + port);
 });
 
-server.timeout = 300000;
+server.timeout = 300000; //5min

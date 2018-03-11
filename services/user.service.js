@@ -6,6 +6,11 @@ function getUsers() {
     return Users.findAll();
 }
 
+function getUserById(id) {
+    if(!id) return;
+    return Users.findOne({ where: { id: id} });
+}
+
 function getUsersWihtAutocommit(autocommit=true) {
     return sequelize.transaction({
         isolationLevel: sequelize.Transaction.ISOLATION_LEVELS.READ_COMMITTED,
@@ -17,5 +22,6 @@ function getUsersWihtAutocommit(autocommit=true) {
 
 module.exports = {
     getUsers: getUsers,
-    getUsersAutoCommit: getUsersWihtAutocommit
+    getUsersAutoCommit: getUsersWihtAutocommit,
+    getUserById: getUserById
 }

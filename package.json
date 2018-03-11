@@ -1,10 +1,13 @@
 {
-    "name": "NodeJs",
+    "name": "leaning-node",
     "version": "0.0.0",
     "private": true,
     "scripts": {
+        "start_api": "NODE_ENV=local ./node_modules/.bin/nodemon server.js",
         "test": "node jasmine-runner.js",
-        "testw": "nodemon jasmine-runner.js"
+        "testw": "nodemon jasmine-runner.js",
+        "jest": "jest",
+        "cover": "istanbul cover *.js"
     },
     "dependencies": {
         "alfresco-js-api": "^1.0.0",
@@ -49,6 +52,7 @@
         "jshint": "^2.9.3",
         "nock": "^8.1.0",
         "nodemon": "^1.10.2",
+        "nyc": "^11.4.1",
         "sinon": "^1.17.6",
         "supertest": "^2.0.0"
     }
