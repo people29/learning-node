@@ -1,5 +1,5 @@
 describe("example jest unit test", ()=> {
-    test("should be pass", ()=> {
+    it("should be pass", ()=> {
         expect(true).toBe(true);
     });
 });

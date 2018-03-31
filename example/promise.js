@@ -1,30 +1,34 @@
 "use strict";
-
 const Q = require("q");
 
-run();
+const CONFIG = {
+    "CONFIG1": "Configuration1",
+    "CONFIG2": "Configuration2"
+};
 
 function run() {
     return Q.resolve()
-    .then(() => {
-        // getData().map((data) => {
-        //     console.log(data.name);
-        // });
-        console.log("step 2");
-        //return getData();
+    .then((res) => {
+        console.log(res);
     })
     .then(() => {
-        console.log("step 3");
+        console.log("end");
+    });
+}
+
+parese();
+function parese() {
+    let account = {
+        unitholders: [
+            {id: 100}, {id: 200}
+        ]
+    };
+
+    let obj = account.unitholders.map(uh => {
+        return { unitholderId: uh.id };
     });
 
-}
+    console.log(CONFIG.CONFIG1);
 
-function getData() {
-    return [
-        {name: "name1", age: 29, sex: "M"},
-        {name: "name2", age: 30, sex: "F"},
-        {name: "name3", age: 31, sex: "F"},
-        {name: "name4", age: 23, sex: "M"},
-    ];
+    console.log(obj);
 }
-
