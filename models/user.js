@@ -1,7 +1,9 @@
 "use strict";
 
 module.exports = (sequelize, DataTypes)=> {
-    let user = sequelize.define("users", {
+    const Country = sequelize.import("country");
+
+    let User = sequelize.define("users", {
         username: {
             type: DataTypes.STRING,
             field: "username"
@@ -21,11 +23,27 @@ module.exports = (sequelize, DataTypes)=> {
         address: {
             type: DataTypes.STRING,
             field: "address"
+        },
+        countryId: {
+            type: DataTypes.INTEGER,
+            field: "country_id"
         }
     },{
         timestamps: false,
-        tableName: "users"
+        tableName: "users",
+        getterMethods: {
+
+        },
+        setterMethods: {
+            country: function (json) {
+                this.setDataValue("countryId", json.id);
+            }
+        }
     });
 
-    return user;
+    User.belongsTo(Country, {
+        foreignKey: "countryId"
+    });
+
+    return User;
 }

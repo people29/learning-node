@@ -3,7 +3,7 @@
     "version": "0.0.0",
     "private": true,
     "scripts": {
-        "start_api": "NODE_ENV=local ./node_modules/.bin/nodemon server.js",
+        "start": "NODE_ENV=local ./node_modules/.bin/nodemon server.js",
         "test": "node jasmine-runner.js",
         "testw": "nodemon jasmine-runner.js",
         "jest": "jest",

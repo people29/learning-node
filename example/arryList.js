@@ -95,7 +95,7 @@ function mapValue(dataObj) {
     dataObj.source = !x ? source : x ;
 }
 
-name();
+// name();
 function name() {
     let investorIds =  [159863, 163541, 175598, 175604, 176604, 176606, 176611, 176618, 176626, 177014, 177016, 178683];
 
@@ -110,3 +110,26 @@ function req(params) {
     console.log(">>>>",params);
     return Q.resolve(params);
 }
+
+tranformData();
+function tranformData() {
+    console.log(">>>>> ");
+    let list = [
+        {
+            name: "1111", lastname: "2222"
+        },
+        {
+            name: "444", lastname: "555"
+        }
+    ];
+    console.log(_transformList(list));
+}
+
+function _transformList(list) {
+    return list.map(data => {
+        return {
+            a: data.name,
+            b: data.lastname
+        };
+    });
+};

@@ -1,14 +1,24 @@
 "use strict";
 const sequelize = require("../config").sequelize;
 const Users = sequelize.import("../models/user");
+const Country = sequelize.import("../models/country");
 
 function getUsers() {
-    return Users.findAll();
+    return Users.findAll({
+        include: [{
+            model: Country
+        }]
+    });
 }
 
 function getUserById(id) {
     if(!id) return;
-    return Users.findOne({ where: { id: id} });
+    return Users.findOne({
+        include: [{
+            model: Country
+        }],
+        where: { id: id}
+    });
 }
 
 function getUsersWihtAutocommit(autocommit=true) {

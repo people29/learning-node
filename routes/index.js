@@ -19,16 +19,14 @@ function home(req, res) {
 const UserService = require("../services/user.service");
 function getUsers(req, res) {
     UserService.getUsers().then(users => {
-        let data = users.map(user => {
-            return user.firstname + " " + user.lastname;
-        });
-        res.send(data);
+        res.send(users);
     });
 }
 
 function getUserById(req, res) {
     let id = req.params.id;
     UserService.getUserById(id).then(user => {
+        console.log(user.country);
         res.send(user);
     });
 }
