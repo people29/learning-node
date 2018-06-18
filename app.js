@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 
 //include routes
 const index = require("./routes");
+const user = require("./routes/users");
 
 
 const app = express();
@@ -21,6 +22,7 @@ app.use("/api/static", express.static("resources"));
 
 // ##### PUBLIC ROUTE ##### //
 index(app);
+user(app);
 
 
 app.use((err, req, res, next) => {

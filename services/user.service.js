@@ -1,10 +1,10 @@
 "use strict";
 const sequelize = require("../config").sequelize;
-const Users = sequelize.import("../models/user");
+const User = sequelize.import("../models/user");
 const Country = sequelize.import("../models/country");
 
 function getUsers() {
-    return Users.findAll({
+    return User.findAll({
         include: [{
             model: Country
         }]
@@ -13,7 +13,7 @@ function getUsers() {
 
 function getUserById(id) {
     if(!id) return;
-    return Users.findOne({
+    return User.findOne({
         include: [{
             model: Country
         }],
@@ -26,12 +26,17 @@ function getUsersWihtAutocommit(autocommit=true) {
         isolationLevel: sequelize.Transaction.ISOLATION_LEVELS.READ_COMMITTED,
         autocommit: autocommit,
     },(t)=> {
-        return Users.findAll({transaction: t});
+        return User.findAll({transaction: t});
     });
+}
+
+function create(user) {
+    return User.create(user);
 }
 
 module.exports = {
     getUsers: getUsers,
     getUsersAutoCommit: getUsersWihtAutocommit,
-    getUserById: getUserById
+    getUserById: getUserById,
+    create: create
 }
