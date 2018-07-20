@@ -10,7 +10,6 @@ describe("test date", ()=> {
         it("1", ()=> {
             jasmine.clock().mockDate(moment("20190222 15:46", "YYYYMMDD HH:mm").toDate());
             jasmine.clock().uninstall();
-            jasmine.clock().uninstall();
         });
     });
 

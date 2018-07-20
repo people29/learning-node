@@ -1,12 +1,13 @@
 "use strict";
 const Q = require("q");
+const UserService = require("./user.service");
 
 function getName() {
     return "learning javascript (sync)";
 }
 
-function getNameAsync() {
-    return Q.resolve("learning javascript (async)");
+async function getNameAsync() {
+    return Promise.resolve("learning javascript (async)");
 }
 
 module.exports = {

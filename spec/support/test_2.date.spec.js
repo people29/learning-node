@@ -1,6 +1,6 @@
 const moment = require("moment");
 
-describe("test date", ()=> {
+xdescribe("test date", ()=> {
 
     describe("date 1", ()=> {
         beforeEach(() => {

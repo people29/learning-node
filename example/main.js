@@ -1,16 +1,39 @@
+const Q = require("q");
+const moment = require("moment");
+const userService = require("../services/user.service");
 const UserDomain = require("../business.domain/user.domain");
 
 (async () => {
-    forEachforInforOf();
+    // returnReject().catch(err => { console.log(err); }); // √
 
+    try {
+        await throwsError();
+    } catch (error) {
+        console.log(error);
+    } //this ok √
+
+    // throwsError().catch(err => {
+    //     console.log(err);
+    // }); //this not work x
+
+    try {
+        await returnReject();
+    } catch (error) {
+        console.log(error)
+    } //this word √
 
 })();
 
-function calLevel(score, rule) {
-    let min = rule.min;
-    let max = rule.max;
-    console.log(min, max);
-    return (min < score < max);
+function returnReject() {
+    return Promise.reject("reject function");
+}
+
+async function throwsError() {
+    let users = await userService.getUsers();
+    users.map(user => {
+        console.log(user.username);
+    });
+    throw "throw function";
 }
 
 function newClass() {
@@ -20,18 +43,7 @@ function newClass() {
         lastname: "Doe"
     };
     let user = new UserDomain(param);
-
-    console.log("user domain: ");
-
-    Object.keys(user).forEach(key => {
-        console.log(key);
-    });
-}
-
-function client({account, id}) {
-    account.map(n => {
-        console.log(n);
-    });
+    let userPending = user.pending({status:"ACTIVE", updateBy: "admin", updateDate: moment().toDate()});
 }
 
 function forEachforInforOf() {
@@ -53,8 +65,13 @@ function forEachforInforOf() {
     //     console.log(v); //{ a: 1, b: 2, c: 4, e: 5, f: 6 }
     // }
 
-    for(let v of listNum) {
-        console.log(v); //1 2 3 4 5 6 7 8 9 <-value of list data
-    }
+    // for(let v of listNum) {
+    //     console.log(v); //1 2 3 4 5 6 7 8 9 <-value of list data
+    // }
+
+    listObj.forEach(v => {
+        console.log(v);
+    });
 
 }
+
